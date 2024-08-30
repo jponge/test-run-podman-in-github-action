@@ -15,7 +15,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt-get -y install podman
-          podman 
+          podman --help
       - name: Run Podman hello world
         run: podman run quay.io/podman/hello
       - name: Build a container image
