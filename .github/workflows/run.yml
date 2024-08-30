@@ -17,3 +17,10 @@ jobs:
           sudo apt-get -y install podman
       - name: Run Podman hello world
         run: podman run quay.io/podman/hello
+      - name: Build a container image
+        run: podman build . --tag myapp
+      - name: Run a container
+        run: |
+          ID=$(podman run -dt -p3000:3000 myapp)
+          curl http://localhost:3000/
+          podman kill ${ID}
