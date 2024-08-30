@@ -25,5 +25,5 @@ jobs:
           ID=$(podman run -dt -p3000:3000 myapp)
           curl http://localhost:3000/
           podman kill ${ID}
-      # - name: Check podman-machine info
-      #   run: podman machine info
+      - name: Check podman-machine info
+        run: podman machine ls
