@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Podman
+
+      - name: Install Podman using Homebrew
         run: |
-          sudo apt update
-          sudo apt-get -y install podman
-          podman --help
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew install podman
       - name: Run Podman hello world
         run: podman run quay.io/podman/hello
       - name: Build a container image
