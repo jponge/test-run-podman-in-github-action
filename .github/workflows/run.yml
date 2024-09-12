@@ -16,6 +16,8 @@ jobs:
         run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install podman
+      - name: Check Podman version
+        run: podman version
       - name: Run Podman hello world
         run: podman run quay.io/podman/hello
       - name: Build a container image
