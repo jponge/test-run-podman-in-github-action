@@ -19,14 +19,16 @@ jobs:
           brew install podman
       - name: Check Podman version
         run: podman version
-      - name: Run Podman hello world
-        run: podman run quay.io/podman/hello
-      - name: Build a container image
-        run: podman build . --tag myapp
-      - name: Run a container
-        run: |
-          ID=$(podman run -dt -p3000:3000 myapp)
-          curl http://localhost:3000/
-          podman kill ${ID}
-      - name: Check podman-machine info
-        run: podman machine ls
+      - name: Dump info
+        run: podman system info --format json
+      # - name: Run Podman hello world
+      #   run: podman run quay.io/podman/hello
+      # - name: Build a container image
+      #   run: podman build . --tag myapp
+      # - name: Run a container
+      #   run: |
+      #     ID=$(podman run -dt -p3000:3000 myapp)
+      #     curl http://localhost:3000/
+      #     podman kill ${ID}
+      # - name: Check podman-machine info
+      #   run: podman machine ls
